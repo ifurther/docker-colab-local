@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM ubuntu:17.10
+FROM nvidia/cuda:10.0-base-ubuntu18.04
 MAINTAINER ikeyasu <ikeyasu@gmail.com>
 
 # Container configuration
@@ -43,12 +43,6 @@ RUN apt-get update && \
         git \
         google-perftools \
         libatlas-base-dev \
-        libcublas8.0 \
-        libcudart8.0 \
-        libcufft8.0 \
-        libcufftw8.0 \
-        libcurand8.0 \
-        libcusolver8.0 \
         libfreetype6-dev \
         libhdf5-dev \
         liblapack-dev \
