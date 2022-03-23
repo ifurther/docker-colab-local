@@ -33,7 +33,7 @@ COPY 90assumeyes /etc/apt/apt.conf.d/
 
 # Setup OS and core packages
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && apt-get install -y lsb-release wget
+RUN apt-get update && apt-get install -y lsb-release wget && \
     wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc && \
     add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/" && \
     apt-get update && \
