@@ -19,3 +19,4 @@ c.NotebookApp.token = ''
 c.NotebookApp.password = ''
 c.NotebookApp.ip = '*'
 c.NotebookApp.open_browser = False
+c.NotebookApp.allow_origin='https://colab.research.google.com'
