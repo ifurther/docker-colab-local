@@ -1,3 +1,4 @@
 [submodule "colabtools"]
 	path = colabtools
 	url = https://github.com/googlecolab/colabtools.git
+	branch = main
