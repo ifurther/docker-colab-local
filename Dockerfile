@@ -63,7 +63,7 @@ RUN apt-get update && apt-get install -y lsb-release wget software-properties-co
         python3-zmq \
         rsync \
         r-base \
-        fronts-liberation \
+        fonts-liberation \
         unzip \
         wget \
         zip && \
