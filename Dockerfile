@@ -59,11 +59,6 @@ RUN apt-get update && \
         libxml2-dev \
         openssh-client \
         pkg-config \
-        python \
-        python-dev \
-        python-pip \
-        python-setuptools \
-        python-zmq \
         python3 \
         python3-dev \
         python3-pip \
@@ -95,8 +90,7 @@ RUN gsutil cp gs://colab-tensorflow/2018-03-01T15:50:49-08:00/*whl / && \
 
 # Update pip and pip3 to avoid noisy warnings for users, and install wheel for
 # use below.
-RUN pip3 install --upgrade pip wheel && \
-    pip2 install --upgrade pip wheel
+RUN pip3 install --upgrade pip wheel
 
 # Add a global pip.conf to avoid warnings on `pip list` and friends.
 COPY pip.conf /etc/
@@ -110,12 +104,10 @@ COPY pip.conf /etc/
 # python2 ones, so that installed scripts still default to python2.
 COPY requirements.txt /
 RUN pip2 install -U http://wheels.scipy.org/subprocess32-3.5.0-cp27-cp27mu-manylinux1_x86_64.whl
-RUN pip3 install -U --upgrade-strategy only-if-needed --ignore-installed --no-cache-dir -r /requirements.txt && \
-    pip2 install -U --upgrade-strategy only-if-needed --ignore-installed --no-cache-dir -r /requirements.txt
+RUN pip3 install -U --upgrade-strategy only-if-needed --ignore-installed --no-cache-dir -r /requirements.txt
 
 # Set up Jupyter kernels for python2 and python3.
 RUN python3 -m ipykernel install
-RUN python2 -m ipykernel install
 
 # Setup Node.js using LTS 6.10
 #    mkdir -p /tools/node && \
@@ -173,18 +165,11 @@ ADD content/ /datalab
 # Install colabtools.
 COPY colabtools /colabtools
 RUN cd /colabtools && \
-    python2 setup.py sdist && \
     pip3 install /colabtools/dist/google-colab-0.0.1a1.tar.gz && \
-    pip2 install /colabtools/dist/google-colab-0.0.1a1.tar.gz && \
     jupyter nbextension install --py google.colab
 
 RUN pip install jupyter_http_over_ws && \
     jupyter serverextension enable --py jupyter_http_over_ws
-
-# Set up our pip/python aliases. We just copy the same file to two places
-# rather than play games with symlinks.
-ADD pymultiplexer /usr/local/bin/pip
-ADD pymultiplexer /usr/local/bin/python
 
 # We customize the chunksize used by googleapiclient for file transfers.
 # TODO(b/74067588): Drop this customization.
