@@ -33,7 +33,9 @@ COPY 90assumeyes /etc/apt/apt.conf.d/
 
 # Setup OS and core packages
 ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update && \
+RUN wget -qO- https://cloud.r-project.org/bin/linux/ubuntu/marutter_pubkey.asc | tee -a /etc/apt/trusted.gpg.d/cran_ubuntu_key.asc && \
+    add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/" && \
+    apt-get update && \
     apt-get install --no-install-recommends -y -q \
         apt-utils \
         build-essential \
@@ -59,7 +61,8 @@ RUN apt-get update && \
         python3-setuptools \
         python3-zmq \
         rsync \
-        ttf-liberation \
+        r-base \
+        fronts-liberation \
         unzip \
         wget \
         zip && \
