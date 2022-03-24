@@ -16,7 +16,7 @@ jobs:
     - name: Install dependecies
       uses: VaultVulp/action-pipenv@v2.0.1
       with:
-        PYTHON_IMAGE_VERSION=${{ matrix.version }}
+        PYTHON_IMAGE_VERSION: ${{ matrix.version }}
         command: install -d # Install all dependencies, including development ones
 
 
