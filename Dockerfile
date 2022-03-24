@@ -106,6 +106,9 @@ RUN pip3 install -U --upgrade-strategy only-if-needed --ignore-installed --no-ca
 # Set up Jupyter kernels for python2 and python3.
 RUN python3 -m ipykernel install
 
+# install R package
+COPY install.R /
+RUN ./install.R
 # Setup Node.js using LTS 6.10
 #    mkdir -p /tools/node && \
 #    wget -nv https://nodejs.org/dist/v6.10.0/node-v6.10.0-linux-x64.tar.gz -O node.tar.gz && \
