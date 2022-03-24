@@ -2,8 +2,9 @@ name: build matrix demo
 
 on:
   push:
-    branches: [main]
+    branches: [ master ]
   pull_request:
+    branches: [ master ]
 
 jobs:
   install-test:
