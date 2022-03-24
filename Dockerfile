@@ -165,7 +165,7 @@ ADD content/ /datalab
 # Install colabtools.
 COPY colabtools /colabtools
 RUN cd /colabtools && \
-    pip3 install /colabtools/setup.py && \
+    pip3 install -e /colabtools && \
     jupyter nbextension install --py google.colab
 
 RUN pip install jupyter_http_over_ws && \
