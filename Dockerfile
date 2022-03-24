@@ -84,7 +84,7 @@ RUN wget -nv https://dl.google.com/dl/cloudsdk/release/google-cloud-sdk.zip && \
 
 # Fetch tensorflow wheels.
 RUN gsutil cp gs://colab-tensorflow/2018-03-01T15:50:49-08:00/*whl / && \
-    for v in 3; do for f in /*tensorflow*-cp${v}*.whl; do pip${v} download -d /tf_deps $f; done; done && unalias pip2
+    for v in 3; do for f in /*tensorflow*-cp${v}*.whl; do pip${v} download -d /tf_deps $f; done; done
 
 # Update pip and pip3 to avoid noisy warnings for users, and install wheel for
 # use below.
