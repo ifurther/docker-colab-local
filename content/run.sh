@@ -33,7 +33,6 @@ if [ -d /usr/lib64-nvidia ]; then
 fi
 
 pip3 install -f /tf_deps -U --upgrade-strategy=only-if-needed tensorflow-*-*36*whl
-pip2 install -f /tf_deps -U --upgrade-strategy=only-if-needed tensorflow-*-*cp27*whl
 
 if [ -n "$T" ]; then
   rm -rf "$T"
