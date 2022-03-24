@@ -10,5 +10,5 @@ localcran <- function() {
 
 localcran()
 
-install(c("IRkernel", "ggplot2", "dplyr", "tinytex", "reticulate"), lib="/usr/local/lib/R/site-library")
+install.packages(c("IRkernel", "ggplot2", "dplyr", "tinytex", "reticulate"), lib="/usr/local/lib/R/site-library")
 IRkernel::installspec()
