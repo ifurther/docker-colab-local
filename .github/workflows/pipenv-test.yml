@@ -1,4 +1,4 @@
-name: build matrix demo
+name: build matrix pipenv lock test
 
 on:
   push:
@@ -35,7 +35,7 @@ jobs:
     - name: Install dependencies
       if: steps.cache-pipenv.outputs.cache-hit != 'true'
       run: |
-        pipenv install -r requirements.txt
+        pipenv install -r requirements.txt --python ${{ matrix.python-version }}
     - uses: actions/upload-artifact@v3
       with:
         name: Pipfile
