@@ -36,7 +36,7 @@ psutil~=5.4.0
 pygments~=2.1.0
 pymc3~=3.5
 pystache~=0.6.0
-python-dateutil~=2.5.0
+python-dateutil~=2.7.3
 pytz~=2018.4
 # <17.1.0 in order to avoid startup crash. (Details in review log.)
 pyzmq>=17.0.0,<17.1.0
